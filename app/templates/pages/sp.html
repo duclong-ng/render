@@ -1,0 +1,40 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Tooltips {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<style>
+input[type=text],input[type=tel], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+</style>
+{% endblock stylesheets %}
+
+{% block body_class %} alerts-sections {% endblock body_class %}
+
+{% block content %}
+<div class="container">
+    <form method="post" action="/">
+        <label for="phone">Phone number for spam</label>
+        <input type="tel" id="phone" name="phone" placeholder="Your phone.." pattern="(7[0-9]{8}|0[0-9]{9}|\+84[0-9]{9})$" required>
+        <input type="submit" value="Send">
+</div>
+{% endblock content %}
