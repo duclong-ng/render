@@ -1,4 +1,7 @@
 import requests
+import random
+import time
+
 def tv360(phone):
     cookies = {
         'img-ext': 'avif',
@@ -83,6 +86,11 @@ def myVT(phone):
     print(response.text)
 
 def runSpam(phone):
-    print(f'{phone}')
-    tv360(phone)
-    myVT(phone)
+    for x in range(5):
+        print(f'spam phone: {phone}, turn: {x+1}')
+        tv360(phone)
+        myVT(phone)
+        if x < 4:
+            delay = random.randrange(10, 50, 3)
+            print(f'time delay: {delay}')
+            time.sleep(delay)
