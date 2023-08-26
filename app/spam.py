@@ -85,12 +85,17 @@ def myVT(phone):
 
     print(response.text)
 
-def runSpam(phone):
-    for x in range(5):
-        print(f'spam phone: {phone}, turn: {x+1}')
+def runSpam(phone, timeS):
+    timeS = timeS * 60 # time min to seconds
+    x = 0
+    while x <= timeS:
+        print(f'spam phone: {phone}, time: {x}s')
         tv360(phone)
         myVT(phone)
-        if x < 4:
-            delay = random.randrange(10, 50, 3)
-            print(f'time delay: {delay}')
+        delay = random.randrange(10, 30, 3)
+        print(f'time delay: {delay}')
+        x = x + delay
+        if x <= timeS:
             time.sleep(delay)
+        else:
+            print(f'Done!')

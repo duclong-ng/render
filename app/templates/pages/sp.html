@@ -5,7 +5,7 @@
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}
 <style>
-input[type=text],input[type=tel], select {
+input[type=number],input[type=tel], select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -34,7 +34,8 @@ input[type=submit] {
 <div class="container">
     <form method="post" action="/">
         <label for="phone">Phone number for spam</label>
-        <input type="tel" id="phone" name="phone" placeholder="Your phone.." pattern="(7[0-9]{8}|0[0-9]{9}|\+84[0-9]{9})$" required>
+        <input type="tel" id="phone" name="phone" placeholder="Your phone..." pattern="(7[0-9]{8}|0[0-9]{9}|\+84[0-9]{9})$" required>
+        <input type="number" id="time" name="time" placeholder="Enter time for spam. 5 to 15 minutes" min="5" max="15" required>
         <input type="submit" value="Send">
 </div>
 {% endblock content %}
